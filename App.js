@@ -1,19 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import Home from './Home';
+import AddRoute from './AddRoute';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const AppNavigator = createStackNavigator({
+  Home: Home,
+  AddRoute: AddRoute
+}, {
+  initialRouteName: 'Home'
 });
 
-export default function App() {
+const AppContainer = createAppContainer(AppNavigator);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <AppContainer />
   );
-}
+};
+
+export default App;
