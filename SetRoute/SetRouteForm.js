@@ -18,7 +18,7 @@ const SetRouteForm = (props) => {
   const [name, setName] = useState(initialRoute.name || '');
   const [setter, setSetter] = useState(initialRoute.setter || '');
   const [grade, setGrade] = useState(initialRoute.grade || '0-2');
-  const [description, setDescription] = useState(initialRoute.description || 'Description');
+  const [description, setDescription] = useState(initialRoute.description || '');
   const holds = initialRoute.holds || [];
 
   const route = {
@@ -66,6 +66,7 @@ const SetRouteForm = (props) => {
         textAlignVertical="top"
         multiline={true}
         numberOfLines={6}
+        value={description}
         placeholder="Description"
         placeholderTextColor="rgba(0,0,0,.3)"
         onChangeText={(text) => setDescription(text)}
