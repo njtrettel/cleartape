@@ -14,7 +14,7 @@ const Home = (props) => {
 
   return (
     <View style={style}>
-      <Button onPress={() => props.navigation.navigate('AddRoute')} title="Add Route" />
+      <Button onPress={() => props.navigation.navigate('SetRoute')} title='Set Route' />
       <RouteList routes={routes} />
     </View>
   );
