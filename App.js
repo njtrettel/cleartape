@@ -3,10 +3,12 @@ import { Text, View } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Home from './Home';
 import SetRoute from './SetRoute';
+import PickHolds from './PickHolds';
 
 const AppNavigator = createStackNavigator({
   Home: Home,
   SetRoute: SetRoute,
+  PickHolds: PickHolds
 }, {
   initialRouteName: 'Home'
 });
