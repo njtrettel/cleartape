@@ -5,9 +5,6 @@ import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/R
 import { withNavigation } from 'react-navigation';
 import style from './style';
 
-const HOLD_SIZE = 20;
-const HOLD_CENTER = HOLD_SIZE / 2;
-
 const ToggleButton = (props) => {
   const { active, color, title, onPress } = props;
   const opacity = active ? 1 : 0.5;
@@ -103,13 +100,9 @@ const PickHolds = (props) => {
           onTouchEnd={onTouchEnd}
           onTouchMove={onMove}
         />
-        {holds.map(({ x, y, color }, i) => {
-          const centerX = x - HOLD_CENTER;
-          const centerY = y - HOLD_CENTER;
-          return (
-            <View key={i} style={style.hold(centerX, centerY, color)}></View>
-          );
-        })}
+        {holds.map(({ x, y, color }, i) => (
+          <View key={i} style={style.hold(x, y, color)}></View>
+        ))}
       </ReactNativeZoomableView>
       <View style={style.submitContainer}>
         <TouchableOpacity style={style.submit} onPress={submit}>

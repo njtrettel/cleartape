@@ -1,3 +1,6 @@
+const HOLD_SIZE = 20;
+const HOLD_CENTER = HOLD_SIZE / 2;
+
 export default {
   container: {
     flex: 1,
@@ -38,10 +41,10 @@ export default {
     color: 'white',
     fontSize: 32
   },
-  hold: (left, top, borderColor) => ({
+  hold: (x, y, borderColor) => ({
     position: 'absolute',
-    top,
-    left,
+    left: x - HOLD_CENTER,
+    top: y - HOLD_CENTER,
     borderColor,
     width: HOLD_SIZE,
     height: HOLD_SIZE,
