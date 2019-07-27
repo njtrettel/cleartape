@@ -4,7 +4,11 @@ import RouteList from './RouteList';
 
 import { fakeRoutes } from '../support/fakeRoutes';
 
-const style = { flex: 1, alignItems: "center", justifyContent: "center" };
+const style = {
+  flex: 1,
+  padding: 16,
+  backgroundColor: 'rgba(194, 233, 251, .25)'
+};
 
 const Home = (props) => {
   const [routes, setRoutes] = useState([]);
