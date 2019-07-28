@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, YellowBox } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Home from './Home';
 import SetRoute from './SetRoute';
@@ -16,6 +16,11 @@ const AppNavigator = createStackNavigator({
 const AppContainer = createAppContainer(AppNavigator);
 
 const App = () => {
+  YellowBox.ignoreWarnings([
+    'Warning: componentWillMount is deprecated',
+    'Warning: componentWillUpdate is deprecated',
+    'Warning: componentWillReceiveProps is deprecated'
+  ]);
   return (
     <AppContainer />
   );
