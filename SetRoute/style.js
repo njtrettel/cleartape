@@ -1,11 +1,11 @@
 export default {
-  textInput: {
+  textInput: (color) => ({
     marginBottom: 24,
     fontSize: 24,
     height: 40,
-    borderBottomColor: 'rgba(0,0,0,.5)',
+    borderBottomColor: color,
     borderBottomWidth: 1
-  },
+  }),
   descriptionInput: {
     flex: 1,
     marginBottom: 24,
@@ -18,7 +18,7 @@ export default {
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  button: {
+  button: (color) => ({
     height: 40,
     flex: 1,
     justifyContent: 'center',
@@ -26,8 +26,8 @@ export default {
     alignSelf: 'center',
     borderRadius: 5,
     marginLeft: 16,
-    backgroundColor: 'rgba(70,130,180,.8)'
-  },
+    backgroundColor: color
+  }),
   buttonText: {
     color: 'white'
   },
