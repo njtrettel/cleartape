@@ -40,7 +40,7 @@ const PickHolds = (props) => {
     shouldAddHold && setHolds([...holds, {
       x: locationX,
       y: locationY,
-      color: startToggle ? 'rgb(0,255,0)' : (endToggle ? 'red' : 'white')
+      color: startToggle ? 'rgba(0,255,0,.6)' : (endToggle ? 'rgba(255,0,0,.6)' : 'rgba(255,255,255,.6)')
     }]);
   };
   const onMove = (e) => {

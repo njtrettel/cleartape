@@ -1,4 +1,4 @@
-const HOLD_SIZE = 20;
+const HOLD_SIZE = 14;
 const HOLD_CENTER = HOLD_SIZE / 2;
 
 export default {
@@ -49,7 +49,7 @@ export default {
     width: HOLD_SIZE,
     height: HOLD_SIZE,
     borderRadius: 100,
-    borderWidth: 5
+    borderWidth: 2
   }),
   submitContainer: {
     marginTop: -90,
