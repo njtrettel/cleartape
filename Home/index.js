@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Text, View } from 'react-native';
 import RouteList from './RouteList';
+import { fetchRoutes } from '../actions';
 
 import { fakeRoutes } from '../support/fakeRoutes';
 
@@ -13,7 +14,7 @@ const style = {
 const Home = (props) => {
   const [routes, setRoutes] = useState([]);
   useEffect(() => {
-    Promise.resolve().then(setRoutes(fakeRoutes))
+    fetchRoutes().then(routes => setRoutes(routes));
   }, []);
 
   return (
