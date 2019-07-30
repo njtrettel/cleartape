@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+import Holds from '../ViewHolds/Holds';
 import { withNavigation } from 'react-navigation';
+import {
+  START_HOLD_COLOR,
+  END_HOLD_COLOR,
+  HOLD_COLOR,
+  START_TOGGLE_COLOR,
+  END_TOGGLE_COLOR
+} from '../style';
 import style from './style';
 
 const ToggleButton = (props) => {
@@ -40,7 +47,7 @@ const PickHolds = (props) => {
     shouldAddHold && setHolds([...holds, {
       x: locationX,
       y: locationY,
-      color: startToggle ? 'rgba(0,255,0,.6)' : (endToggle ? 'rgba(255,0,0,.6)' : 'rgba(255,255,255,.6)')
+      color: startToggle ? START_HOLD_COLOR : (endToggle ? END_HOLD_COLOR : HOLD_COLOR)
     }]);
   };
   const onMove = (e) => {
@@ -74,36 +81,22 @@ const PickHolds = (props) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, position: 'absolute', top: 0, height: '100%' }}>
       <View style={style.buttonsContainer}>
-        <ToggleButton active={startToggle} color="green" title="Start" onPress={toggleStart} />
-        <ToggleButton active={endToggle} color="rgba(255,0,0,.8)" title="End" onPress={toggleEnd} />
+        <ToggleButton active={startToggle} color={START_TOGGLE_COLOR} title="Start" onPress={toggleStart} />
+        <ToggleButton active={endToggle} color={END_TOGGLE_COLOR} title="End" onPress={toggleEnd} />
         <TouchableOpacity style={style.button(1, 'transparent', 50)} onPress={undo}>
           <FontAwesome style={style.icon} name="undo"/>
         </TouchableOpacity>
       </View>
-      <ReactNativeZoomableView
-        maxZoom={2}
-        minZoom={1}
-        zoomStep={0.5}
-        initialZoom={1}
-        bindToBorders={true}
-        onDoubleTapAfter={onDoubleTap}
+      <Holds
+        onDoubleTap={onDoubleTap}
         onZoomStart={onZoomStart}
-        style={style.container}
-      >
-        <Image
-          resizeMode="contain"
-          style={style.image}
-          source={require('../assets/wall.jpg')}
-          onTouchStart={onTouch}
-          onTouchEnd={onTouchEnd}
-          onTouchMove={onMove}
-        />
-        {holds.map(({ x, y, color }, i) => (
-          <View key={i} style={style.hold(x, y, color)}></View>
-        ))}
-      </ReactNativeZoomableView>
+        onTouchStart={onTouch}
+        onTouchEnd={onTouchEnd}
+        onTouchMove={onMove}
+        holds={holds}
+      />
       <View style={style.submitContainer}>
         <TouchableOpacity style={style.submit} onPress={submit}>
           <Text style={style.submitText}>Done</Text>
@@ -115,7 +108,7 @@ const PickHolds = (props) => {
 
 class Screen extends React.Component {
   static navigationOptions = {
-    title: 'Pick Holds'
+    header: null
   };
 
   render() {

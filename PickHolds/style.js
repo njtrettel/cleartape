@@ -1,22 +1,10 @@
-const HOLD_SIZE = 14;
-const HOLD_CENTER = HOLD_SIZE / 2;
-
 export default {
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    flexDirection: 'row',
-    zIndex: 0
-  },
-  image: {
-    flex: 1,
-    width: '100%',
-    height: 'auto',
-    margin: 'auto'
-  },
   buttonsContainer: {
-    marginBottom: -100,
-    paddingTop: 20,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    paddingTop: 60,
     paddingLeft: 50,
     paddingRight: 50,
     zIndex: 100,
@@ -41,19 +29,12 @@ export default {
     color: 'white',
     fontSize: 32
   },
-  hold: (x, y, borderColor) => ({
-    position: 'absolute',
-    left: x - HOLD_CENTER,
-    top: y - HOLD_CENTER,
-    borderColor,
-    width: HOLD_SIZE,
-    height: HOLD_SIZE,
-    borderRadius: 100,
-    borderWidth: 2
-  }),
   submitContainer: {
-    marginTop: -90,
-    marginBottom: 20,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingBottom: 20,
     zIndex: 100
   },
   submit: {
