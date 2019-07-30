@@ -1,3 +1,5 @@
+import { ROUTE_BUTTON_COLOR, PLACEHOLDER_COLOR } from '../style';
+
 export default {
   textInput: (color) => ({
     marginBottom: 24,
@@ -11,7 +13,7 @@ export default {
     marginBottom: 24,
     padding: 8,
     fontSize: 24,
-    borderColor: 'rgba(0,0,0,.5)',
+    borderColor: PLACEHOLDER_COLOR,
     borderWidth: 1
   },
   row: {
@@ -39,7 +41,7 @@ export default {
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
-    backgroundColor: 'rgba(70,180,130,.8)'
+    backgroundColor: ROUTE_BUTTON_COLOR
   },
   submitText: {
     color: 'white',

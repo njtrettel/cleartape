@@ -5,6 +5,7 @@ import { Dropdown } from 'react-native-material-dropdown';
 import Toaster, { ToastStyles } from 'react-native-toaster';
 import { postRoute } from '../actions';
 import style from './style';
+import { HOLDS_BUTTON_COLOR, PLACEHOLDER_COLOR } from '../style';
 
 const grades = [{
   value: null, label: ''
@@ -66,23 +67,23 @@ const SetRouteForm = (props) => {
     <View style={{ flex: 1 }}>
       {submitError && <Toaster message={{ text: submitError, styles: ToastStyles.error }} />}
       <TextInput
-        style={style.textInput(formErrors.name ? 'red': 'rgba(0,0,0,.3)')}
+        style={style.textInput(formErrors.name ? 'red': PLACEHOLDER_COLOR)}
         placeholder="Name"
         value={name}
-        placeholderTextColor={formErrors.name ? 'red': 'rgba(0,0,0,.3)'}
+        placeholderTextColor={formErrors.name ? 'red': PLACEHOLDER_COLOR}
         onChangeText={(text) => setName(text)}
       />
       <TextInput
-        style={style.textInput('rgba(0,0,0,.3)')}
+        style={style.textInput(PLACEHOLDER_COLOR)}
         value={setter}
         placeholder="Setter (optional)"
-        placeholderTextColor="rgba(0,0,0,.3)"
+        placeholderTextColor={PLACEHOLDER_COLOR}
         onChangeText={(text) => setSetter(text)}
       />
       <View style={style.row}>
         <Dropdown
           labelFontSize={24}
-          baseColor={formErrors.grade ? 'red' : 'rgba(0,0,0,.3)'}
+          baseColor={formErrors.grade ? 'red' : PLACEHOLDER_COLOR}
           fontSize={20}
           animationDuration={100}
           value={grade}
@@ -92,7 +93,7 @@ const SetRouteForm = (props) => {
           containerStyle={style.dropdown}
         />
         <TouchableOpacity
-          style={style.button(formErrors.holds ? 'red' : 'rgba(70,130,180,.8)')}
+          style={style.button(formErrors.holds ? 'red' : HOLDS_BUTTON_COLOR)}
           onPress={() => props.navigation.replace('PickHolds', { route })}
         >
           <Text style={style.buttonText}>Pick Holds</Text>
@@ -105,7 +106,7 @@ const SetRouteForm = (props) => {
         numberOfLines={6}
         value={description}
         placeholder="Description (optional)"
-        placeholderTextColor="rgba(0,0,0,.3)"
+        placeholderTextColor={PLACEHOLDER_COLOR}
         onChangeText={(text) => setDescription(text)}
       />
       <TouchableOpacity style={style.submit} onPress={submit}>

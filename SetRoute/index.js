@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Button, Text } from 'react-native';
 import SetRouteForm from './SetRouteForm';
+import { SCREEN_BACKGROUND_COLOR } from '../style';
 
 const style = {
   flex: 1,
   padding: 32,
-  backgroundColor: 'rgba(194, 233, 251, .25)'
+  backgroundColor: SCREEN_BACKGROUND_COLOR
 };
 
 class SetRoute extends React.Component {
