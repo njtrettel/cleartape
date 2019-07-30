@@ -3,7 +3,9 @@ import { View, Text, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Accordion from 'react-native-collapsible/Accordion';
 import KeyValue from './KeyValue';
+import ViewHoldsLink from './ViewHoldsLink';
 import style from './style';
+import { HIGHLIGHT_COLOR } from '../style';
 
 const gradeToColorMap = (grade) => ({
   '0-2': 'green',
@@ -26,13 +28,14 @@ const renderHeader = (route, _, expanded) => {
   );
 };
 const renderContent = (route, _, expanded) => {
-  const { grade, setter, description } = route;
+  const { grade, setter, description, holds } = route;
   const expandedStyle = expanded ? style.expanded : style.collapsed;
   return (
     <View style={[style.content, expandedStyle]}>
       <KeyValue keyName="grade" value={`v${grade}`} />
-      <KeyValue keyName="setter" value={setter} />
+      <KeyValue keyName="setter" value={setter || 'Unknown'} />
       {description && <KeyValue keyName="description" value={description} />}
+      <KeyValue as={ViewHoldsLink} keyName="" value="View holds" holds={holds} />
     </View>
   );
 };
@@ -44,7 +47,7 @@ const RouteList = (props) => {
   return (
     <ScrollView>
       <Accordion
-        underlayColor="rgba(0,0,0,.1)"
+        underlayColor={HIGHLIGHT_COLOR}
         activeSections={activeSections}
         sections={routes}
         renderHeader={renderHeader}
