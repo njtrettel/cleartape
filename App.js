@@ -4,11 +4,13 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import Home from './Home';
 import SetRoute from './SetRoute';
 import PickHolds from './PickHolds';
+import ViewHolds from './ViewHolds';
 
 const AppNavigator = createStackNavigator({
   Home: Home,
   SetRoute: SetRoute,
-  PickHolds: PickHolds
+  PickHolds: PickHolds,
+  ViewHolds: ViewHolds
 }, {
   initialRouteName: 'Home'
 });
