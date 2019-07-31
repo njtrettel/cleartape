@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Text, View, TouchableOpacity } from 'react-native';
+import { Button, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import RouteList from './RouteList';
 import { fetchRoutes } from '../actions';
-import { SCREEN_BACKGROUND_COLOR, ROUTE_BUTTON_COLOR } from '../style';
+import {
+  SCREEN_BACKGROUND_COLOR,
+  SCREEN_BACKGROUND_COLOR_DARK,
+  ROUTE_BUTTON_COLOR
+} from '../style';
 
 const style = {
   container: {
@@ -23,13 +27,26 @@ const style = {
   },
   buttonText: {
     color: 'white'
+  },
+  loading: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
   }
 };
 
 const Home = (props) => {
   const [routes, setRoutes] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetchRoutes().then(routes => setRoutes(routes));
+    setLoading(true);
+    fetchRoutes().then(routes => {
+      setLoading(false);
+      setRoutes(routes);
+    });
   }, []);
 
   return (
@@ -37,7 +54,10 @@ const Home = (props) => {
       <TouchableOpacity style={style.button} onPress={() => props.navigation.navigate('SetRoute')}>
         <Text style={style.buttonText}>Set Route</Text>
       </TouchableOpacity>
-      <RouteList routes={routes} />
+      {loading
+        ? <ActivityIndicator style={style.loading} size={80} color={SCREEN_BACKGROUND_COLOR_DARK} />
+        : <RouteList routes={routes} />
+      }
     </View>
   );
 };
