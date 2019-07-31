@@ -43,9 +43,9 @@ const renderContent = (route, _, expanded) => {
 const RouteList = (props) => {
   const [activeSections, setActiveSections] = useState([]);
   const onChange = sections => setActiveSections(sections);
-  const { routes } = props;
+  const { routes, style } = props;
   return (
-    <ScrollView>
+    <ScrollView style={style}>
       <Accordion
         underlayColor={HIGHLIGHT_COLOR}
         activeSections={activeSections}

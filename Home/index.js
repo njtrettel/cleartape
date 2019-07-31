@@ -1,43 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
-import RouteList from './RouteList';
+import RouteList from '../RouteList';
 import { SearchBar } from 'react-native-elements';
 import { fetchRoutes } from '../actions';
-import {
-  SCREEN_BACKGROUND_COLOR,
-  SCREEN_BACKGROUND_COLOR_DARK,
-  ROUTE_BUTTON_COLOR
-} from '../style';
-
-const style = {
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: SCREEN_BACKGROUND_COLOR
-  },
-  button: {
-    height: 40,
-    paddingLeft: 16,
-    paddingRight: 16,
-    marginBottom: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    borderRadius: 5,
-    backgroundColor: ROUTE_BUTTON_COLOR
-  },
-  buttonText: {
-    color: 'white'
-  },
-  loading: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0
-  }
-};
+import { SCREEN_BACKGROUND_COLOR_DARK } from '../style';
+import style from './style';
 
 const Home = (props) => {
   const [routes, setRoutes] = useState([]);

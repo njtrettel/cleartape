@@ -1,40 +1,49 @@
+import {
+  SCREEN_BACKGROUND_COLOR,
+  ROUTE_BUTTON_COLOR
+} from '../style';
+
 export default {
   container: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    flex: 1,
+    padding: 16,
+    backgroundColor: SCREEN_BACKGROUND_COLOR
+  },
+  loading: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 16
+  },
+  button: {
+    height: 40,
     paddingLeft: 16,
     paddingRight: 16,
-    flexDirection: 'row'
-  },
-  content: {
-    paddingTop: 16,
-    paddingBottom: 16,
-    paddingLeft: 48
-  },
-  text: {
-    fontSize: 20,
-    flexGrow: 1
-  },
-  title: {
-    flexDirection: 'row'
-  },
-  icon: {
+    marginLeft: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
     alignSelf: 'center',
-    flexGrow: 0
+    borderRadius: 5,
+    backgroundColor: ROUTE_BUTTON_COLOR
   },
-  expanded: {
-    backgroundColor: 'rgba(255,255,255,.5)'
+  buttonText: {
+    color: 'white'
   },
-  collapsed: {
-    backgroundColor: 'transparent'
+  searchContainer: {
+    flex: 1,
+    borderTopWidth: 0,
+    borderBottomWidth: 0
   },
-  circle: (color) => ({
-    backgroundColor: color,
-    borderRadius: 100,
-    alignSelf: 'stretch',
-    width: 16,
-    height: 16,
-    alignSelf: 'center',
-    marginRight: 16
-  })
+  search: {
+    backgroundColor: 'white',
+    borderWidth: 0,
+    borderColor: 'white'
+  }
 };
