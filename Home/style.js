@@ -1,6 +1,7 @@
 import {
   SCREEN_BACKGROUND_COLOR,
-  ROUTE_BUTTON_COLOR
+  ROUTE_BUTTON_COLOR,
+  PLACEHOLDER_COLOR
 } from '../style';
 
 export default {
@@ -20,13 +21,11 @@ export default {
   topBar: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 16
+    marginBottom: 8
   },
   button: {
     height: 40,
-    paddingLeft: 16,
-    paddingRight: 16,
-    marginLeft: 16,
+    width: 100,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
@@ -38,12 +37,32 @@ export default {
   },
   searchContainer: {
     flex: 1,
-    borderTopWidth: 0,
-    borderBottomWidth: 0
+    marginRight: 16
   },
   search: {
     backgroundColor: 'white',
-    borderWidth: 0,
-    borderColor: 'white'
+    borderTopWidth: 0,
+    borderBottomWidth: 0
+  },
+  filterBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // paddingLeft: 16,
+    // paddingRight: 16
+  },
+  filterOption: {
+    flexDirection: 'row'
+  },
+  filterOptionLabel: {
+    color: PLACEHOLDER_COLOR
+  },
+  filterOptionPlaceholder: {
+    width: 100
+  },
+  dropdown: {
+    marginTop: -34,
+    marginBottom: 8,
+    marginLeft: 16,
+    width: 100
   }
 };

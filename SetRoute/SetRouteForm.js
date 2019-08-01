@@ -7,17 +7,9 @@ import { postRoute } from '../actions';
 import style from './style';
 import { HOLDS_BUTTON_COLOR, PLACEHOLDER_COLOR } from '../style';
 
-const grades = [{
-  value: null, label: ''
-}, {
-  value: '0-2', label: 'v0-2'
-}, {
-  value: '3-5', label: 'v3-5'
-}, {
-  value: '6-8', label: 'v6-8'
-}, {
-  value: '9+', label: 'v9+'
-}];
+import { grades } from '../util';
+
+const gradesWithNull = [{ value: null, label: '' }, ...grades];
 
 const validateRoute = (route) => {
   const requiredFields = ['name', 'grade', 'holds'];
@@ -85,11 +77,10 @@ const SetRouteForm = (props) => {
           labelFontSize={24}
           baseColor={formErrors.grade ? 'red' : PLACEHOLDER_COLOR}
           fontSize={20}
-          animationDuration={100}
           value={grade}
           label="Grade"
           onChangeText={(text) => setGrade(text)}
-          data={grades}
+          data={gradesWithNull}
           containerStyle={style.dropdown}
         />
         <TouchableOpacity
