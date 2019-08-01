@@ -4,6 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import Accordion from 'react-native-collapsible/Accordion';
 import KeyValue from './KeyValue';
 import ViewHoldsLink from './ViewHoldsLink';
+import DeleteModal from './DeleteModal';
 import style from './style';
 import { HIGHLIGHT_COLOR } from '../style';
 
@@ -36,6 +37,7 @@ const renderContent = (route, _, expanded) => {
       <KeyValue keyName="setter" value={setter || 'Unknown'} />
       {description && <KeyValue keyName="description" value={description} />}
       <KeyValue as={ViewHoldsLink} keyName="" value="View holds" holds={holds} />
+      <DeleteModal />
     </View>
   );
 };
