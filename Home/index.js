@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import Toaster, { ToastStyles } from 'react-native-toaster';
 import { Dropdown } from 'react-native-material-dropdown';
 import RouteList from '../RouteList';
 import { SearchBar } from 'react-native-elements';
@@ -45,6 +46,7 @@ const sortRoutes = (routes, sortBy) => {
 const Home = (props) => {
   const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState('');
   const [gradeFilter, setGradeFilter] = useState(gradesWithAll[0].value);
   const [sortOption, setSortOption] = useState(sortOptions[0].value);
@@ -68,11 +70,15 @@ const Home = (props) => {
     fetchRoutes().then(routes => {
       setLoading(false);
       setRoutes(routes);
+    }).catch(error => {
+      setLoading(false);
+      setError('Error: Could not get routes');
     });
   }, []);
 
   return (
     <View style={style.container}>
+      {error && <Toaster message={{ text: error, styles: ToastStyles.error }} />}
       <View style={style.topBar}>
         <SearchBar
           containerStyle={[style.search, style.searchContainer]}
