@@ -37,7 +37,7 @@ const renderContent = (route, _, expanded) => {
       <KeyValue keyName="setter" value={setter || 'Unknown'} />
       {description && <KeyValue keyName="description" value={description} />}
       <KeyValue as={ViewHoldsLink} keyName="" value="View holds" holds={holds} />
-      <DeleteModal />
+      <DeleteModal route={route} />
     </View>
   );
 };

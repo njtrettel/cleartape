@@ -51,7 +51,6 @@ const SetRouteForm = (props) => {
     }).catch(error => {
       setSubmitLoading(false);
       setSubmitError('Error: Could not create route');
-      setSubmitError(null);
     });
   };
 
