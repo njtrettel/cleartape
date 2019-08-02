@@ -63,7 +63,7 @@ export default {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(255,255,255,.8)'
+    backgroundColor: 'rgba(200,200,200,.8)'
   },
   modal: {
     position: 'absolute',
@@ -71,11 +71,12 @@ export default {
     bottom: '35%',
     left: '5%',
     right: '5%',
-    backgroundColor: 'rgba(220,110,110,1)',
+    backgroundColor: 'white',
     paddingTop: 16,
     paddingBottom: 16,
     paddingLeft: 32,
-    paddingRight: 32
+    paddingRight: 32,
+    borderRadius: 10
   },
   modalHeader: {
     alignSelf: 'center',
@@ -99,11 +100,14 @@ export default {
     paddingRight: 16,
     marginLeft: 16
   },
+  modalButtonText: {
+    fontWeight: 'bold'
+  },
   primaryButton: {
     backgroundColor: 'rgba(255,0,0,1)',
     color: 'white'
   },
   secondaryButton: {
-    backgroundColor: 'rgba(255,255,255,1)'
+    backgroundColor: 'rgba(230,230,230,1)'
   }
 };

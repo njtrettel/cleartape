@@ -40,10 +40,13 @@ const DeleteModal = ({ route, navigation }) => {
             <Text style={style.modalBody}>{deleteMessage}</Text>
             <View style={style.modalActions}>
               <TouchableOpacity style={[style.modalButton, style.secondaryButton]} onPress={() => setOpen(false)}>
-                <Text>Cancel</Text>
+                <Text style={style.modalButtonText}>Cancel</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[style.modalButton, style.primaryButton]} onPress={onDelete}>
-                {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Delete</Text>}
+                {loading
+                  ? <ActivityIndicator size="small" color="white" />
+                  : <Text style={style.modalButtonText}>Delete</Text>
+                }
               </TouchableOpacity>
             </View>
           </View>
