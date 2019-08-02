@@ -5,6 +5,7 @@ import Home from './Home';
 import SetRoute from './SetRoute';
 import PickHolds from './PickHolds';
 import ViewHolds from './ViewHolds';
+import { HEADER_COLOR } from './style';
 
 const AppNavigator = createStackNavigator({
   Home: Home,
@@ -12,7 +13,17 @@ const AppNavigator = createStackNavigator({
   PickHolds: PickHolds,
   ViewHolds: ViewHolds
 }, {
-  initialRouteName: 'Home'
+  initialRouteName: 'Home',
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: HEADER_COLOR
+    },
+    headerTitleStyle: {
+      color: 'white',
+      fontWeight: 'bold'
+    },
+    headerTintColor: 'white'
+  }
 });
 
 const AppContainer = createAppContainer(AppNavigator);

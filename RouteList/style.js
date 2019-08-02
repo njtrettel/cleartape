@@ -71,7 +71,7 @@ export default {
     bottom: '35%',
     left: '5%',
     right: '5%',
-    backgroundColor: 'rgba(200,100,100,1)',
+    backgroundColor: 'rgba(220,110,110,1)',
     paddingTop: 16,
     paddingBottom: 16,
     paddingLeft: 32,

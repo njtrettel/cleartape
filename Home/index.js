@@ -127,4 +127,19 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+class Screen extends React.Component {
+  static navigationOptions = {
+    title: 'Clear Tape',
+    headerTitleStyle: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 26
+    }
+  };
+
+  render() {
+    return <Home {...this.props} />;
+  }
+}
+
+export default Screen;
