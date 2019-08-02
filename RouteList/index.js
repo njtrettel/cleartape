@@ -42,20 +42,29 @@ const renderContent = (route, _, expanded) => {
   );
 };
 
+const renderEmptyState = () => (
+  <View style={style.empty}>
+    <Text style={style.emptyText}>No routes yet</Text>
+  </View>
+);
+
 const RouteList = (props) => {
   const [activeSections, setActiveSections] = useState([]);
   const onChange = sections => setActiveSections(sections);
   const { routes, style } = props;
   return (
     <ScrollView style={style}>
-      <Accordion
-        underlayColor={HIGHLIGHT_COLOR}
-        activeSections={activeSections}
-        sections={routes}
-        renderHeader={renderHeader}
-        renderContent={renderContent}
-        onChange={onChange}
-      />
+      {routes.length ?
+        <Accordion
+          underlayColor={HIGHLIGHT_COLOR}
+          activeSections={activeSections}
+          sections={routes}
+          renderHeader={renderHeader}
+          renderContent={renderContent}
+          onChange={onChange}
+        /> :
+        renderEmptyState()
+      }
     </ScrollView>
   );
 };

@@ -12,6 +12,16 @@ export default {
     paddingLeft: 48,
     paddingRight: 16
   },
+  empty: {
+    flex: 1
+  },
+  emptyText: {
+    fontSize: 32,
+    marginTop: '45%',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'grey'
+  },
   text: {
     fontSize: 20,
     flexGrow: 1
