@@ -12,6 +12,8 @@ import {
 } from '../style';
 import style from './style';
 
+const DRAG_THRESHOLD = 1;
+
 const ToggleButton = (props) => {
   const { active, color, title, onPress } = props;
   const opacity = active ? 1 : 0.5;
@@ -56,7 +58,7 @@ const PickHolds = (props) => {
     }
     const { locationX, locationY } = e.nativeEvent;
     const { x, y } = touchLocation;
-    if (Math.abs(locationX - x) > 5 || Math.abs(locationY - y) > 5) {
+    if (Math.abs(locationX - x) > DRAG_THRESHOLD || Math.abs(locationY - y) > DRAG_THRESHOLD) {
       setShouldAddHold(false);
     }
   };
