@@ -62,7 +62,7 @@ const Home = (props) => {
   };
 
   const routesInGrade = routes.filter(route => gradeFilter ? route.grade === gradeFilter : true);
-  const searchedRoutes = routesInGrade.filter(route => route.name.includes(searchText));
+  const searchedRoutes = routesInGrade.filter(route => route.name.toLowerCase().includes(searchText.toLowerCase()));
   const sortedRoutes = sortRoutes(searchedRoutes, sortOption);
 
   useEffect(() => {
