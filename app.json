@@ -28,7 +28,8 @@
       "bundleIdentifier": "com.nicktrettel.cleartape"
     },
     "android": {
-      "package": "com.nicktrettel.cleartap"
+      "package": "com.nicktrettel.cleartape",
+      "permissions": []
     }
   }
 }
