@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Image, Dimensions } from 'react-native';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+import { imageHeight, imageMargin, calculateHoldCoordinates } from '../util';
 import style from './style';
 
 const image = require('../assets/wall.jpg');
-const { width, height } = Image.resolveAssetSource(image);
-const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 const Holds = (props) => {
   const {
@@ -16,9 +15,6 @@ const Holds = (props) => {
     onTouchMove,
     holds
   } = props;
-  const imagePercent = deviceWidth / width;
-  const imageHeight = height * imagePercent;
-  const imageMargin = (deviceHeight - imageHeight) / 2;
 
   return (
     <ReactNativeZoomableView
@@ -39,9 +35,12 @@ const Holds = (props) => {
         onTouchEnd={onTouchEnd}
         onTouchMove={onTouchMove}
       />
-      {holds.map(({ x, y, color }, i) => (
-        <View key={i} style={style.hold(x, y + imageMargin, color)}></View>
-      ))}
+      {holds.map((hold, i) => {
+        const { x, y } = calculateHoldCoordinates(hold.x, hold.y);
+        return (
+          <View key={i} style={style.hold(x, y + imageMargin, hold.color)}></View>
+        );
+      })}
     </ReactNativeZoomableView>
   );
 };

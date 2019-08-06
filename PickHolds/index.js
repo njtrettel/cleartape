@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Holds from '../ViewHolds/Holds';
 import { withNavigation } from 'react-navigation';
+import { calculateHoldPercentages } from '../util';
 import {
   START_HOLD_COLOR,
   END_HOLD_COLOR,
@@ -46,9 +47,9 @@ const PickHolds = (props) => {
   }
   const onTouchEnd = (e) => {
     const { locationX, locationY } = e.nativeEvent;
+    const { x, y } = calculateHoldPercentages(locationX, locationY);
     shouldAddHold && setHolds([...holds, {
-      x: locationX,
-      y: locationY,
+      x, y,
       color: startToggle ? START_HOLD_COLOR : (endToggle ? END_HOLD_COLOR : HOLD_COLOR)
     }]);
   };
