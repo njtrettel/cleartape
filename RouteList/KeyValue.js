@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 
 const style = {
@@ -19,7 +20,7 @@ const style = {
   }
 };
 
-const toUpper = string => `${string.charAt(0).toUpperCase()}${string.slice(1)}`
+const toUpper = string => `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
 
 const KeyValue = ({ keyName, value, as, ...rest }) => {
   const Component = as || Text;
@@ -29,6 +30,12 @@ const KeyValue = ({ keyName, value, as, ...rest }) => {
       <Component style={style.value} {...rest}>{value}</Component>
     </View>
   );
+};
+
+KeyValue.propTypes = {
+  keyName: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  as: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string])
 };
 
 export default KeyValue;

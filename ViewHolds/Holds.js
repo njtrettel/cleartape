@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image, Dimensions } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, Image } from 'react-native';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 import { imageHeight, imageMargin, calculateHoldCoordinates } from '../util';
 import style from './style';
@@ -43,6 +44,16 @@ const Holds = (props) => {
       })}
     </ReactNativeZoomableView>
   );
+};
+
+Holds.propTypes = {
+  onDoubleTap: PropTypes.func,
+  onZoomStart: PropTypes.func,
+  onZoomEnd: PropTypes.func,
+  onTouchStart: PropTypes.func,
+  onTouchMove: PropTypes.func,
+  onTouchEnd: PropTypes.func,
+  holds: PropTypes.array.isRequired
 };
 
 export default Holds;

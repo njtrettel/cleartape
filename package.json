@@ -7,12 +7,15 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "build": "expo build:android -t app-bundle",
+    "lint": "eslint actions Home PickHolds RouteList SetRoute ViewHolds util.js App.js"
   },
   "dependencies": {
     "@dudigital/react-native-zoomable-view": "^1.0.13",
     "@expo/vector-icons": "^10.0.3",
     "expo": "^33.0.0",
+    "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
@@ -24,8 +27,12 @@
     "react-navigation": "^3.11.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "babel-preset-expo": "^5.1.1",
-    "claudia": "^5.6.0"
+    "claudia": "^5.6.0",
+    "eslint": "^6.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3"
   },
   "private": true
 }

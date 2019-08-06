@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -67,6 +68,11 @@ const RouteList = (props) => {
       }
     </ScrollView>
   );
+};
+
+RouteList.propTypes = {
+  routes: PropTypes.array.isRequired,
+  style: PropTypes.object
 };
 
 export default RouteList;

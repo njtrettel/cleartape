@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import PropTypes from 'prop-types';
+import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Toaster, { ToastStyles } from 'react-native-toaster';
 import { Dropdown } from 'react-native-material-dropdown';
 import RouteList from '../RouteList';
@@ -27,7 +28,7 @@ const findStartHold = (holds = []) => {
     return startHolds[0];
   }
   return holds[0];
-}
+};
 
 const sortRoutes = (routes, sortBy) => {
   if (sortBy === 'grade') {
@@ -51,16 +52,6 @@ const Home = (props) => {
   const [gradeFilter, setGradeFilter] = useState(gradesWithAll[0].value);
   const [sortOption, setSortOption] = useState(sortOptions[0].value);
 
-  const search = (text) => {
-    setSearchText(text);
-  };
-  const setGrade = (text, test) => {
-    setGradeFilter(grade);
-  };
-  const setSortBy = (text) => {
-    setSortOption(text);
-  };
-
   const routesInGrade = routes.filter(route => gradeFilter ? route.grade === gradeFilter : true);
   const searchedRoutes = routesInGrade.filter(route => route.name.toLowerCase().includes(searchText.toLowerCase()));
   const sortedRoutes = sortRoutes(searchedRoutes, sortOption);
@@ -70,7 +61,7 @@ const Home = (props) => {
     fetchRoutes().then(routes => {
       setLoading(false);
       setRoutes(routes);
-    }).catch(error => {
+    }).catch(() => {
       setLoading(false);
       setError('Error: Could not get routes');
     });
@@ -84,7 +75,7 @@ const Home = (props) => {
           containerStyle={[style.search, style.searchContainer]}
           inputContainerStyle={style.search}
           inputStyle={style.search}
-          onChangeText={search}
+          onChangeText={setSearchText}
           placeholder="Search"
           value={searchText}
         />
@@ -100,7 +91,7 @@ const Home = (props) => {
             baseColor={PLACEHOLDER_COLOR}
             fontSize={16}
             value={gradeFilter}
-            onChangeText={(grade) => setGradeFilter(grade)}
+            onChangeText={setGradeFilter}
             data={gradesWithAll}
             containerStyle={style.dropdown}
           />
@@ -112,7 +103,7 @@ const Home = (props) => {
             baseColor={PLACEHOLDER_COLOR}
             fontSize={16}
             value={sortOption}
-            onChangeText={(sort) => setSortBy(sort)}
+            onChangeText={setSortOption}
             data={sortOptions}
             containerStyle={style.dropdown}
           />
@@ -125,6 +116,10 @@ const Home = (props) => {
       }
     </View>
   );
+};
+
+Home.propTypes = {
+  navigation: PropTypes.object.isRequired
 };
 
 class Screen extends React.Component {

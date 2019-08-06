@@ -51,7 +51,6 @@ export default {
   circle: (color) => ({
     backgroundColor: color,
     borderRadius: 100,
-    alignSelf: 'stretch',
     width: 16,
     height: 16,
     alignSelf: 'center',

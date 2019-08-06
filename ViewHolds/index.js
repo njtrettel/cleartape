@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Holds from './Holds';
 
@@ -12,6 +13,9 @@ const ViewHolds = (props) => {
   );
 };
 
+ViewHolds.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 class Screen extends React.Component {
   static navigationOptions = {

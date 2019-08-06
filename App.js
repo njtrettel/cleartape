@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, YellowBox } from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import React from 'react';
+import { YellowBox } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from './Home';
 import SetRoute from './SetRoute';
 import PickHolds from './PickHolds';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Button, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import SetRouteForm from './SetRouteForm';
 import { SCREEN_BACKGROUND_COLOR } from '../style';
 
@@ -22,5 +23,9 @@ class SetRoute extends React.Component {
     );
   }
 }
+
+SetRoute.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default SetRoute;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Holds from '../ViewHolds/Holds';
 import { withNavigation } from 'react-navigation';
@@ -27,6 +28,13 @@ const ToggleButton = (props) => {
   );
 };
 
+ToggleButton.propTypes = {
+  active: PropTypes.bool.isRequired,
+  color: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired
+};
+
 const PickHolds = (props) => {
   const initialRoute = props.navigation.getParam('route', {});
   const [holds, setHolds] = useState(initialRoute.holds || []);
@@ -44,7 +52,7 @@ const PickHolds = (props) => {
     const { locationX, locationY } = e.nativeEvent;
     setTouchLocation({ x: locationX, y: locationY });
     setShouldAddHold(true);
-  }
+  };
   const onTouchEnd = (e) => {
     const { locationX, locationY } = e.nativeEvent;
     const { x, y } = calculateHoldPercentages(locationX, locationY);
@@ -107,6 +115,10 @@ const PickHolds = (props) => {
       </View>
     </View>
   );
+};
+
+PickHolds.propTypes = {
+  navigation: PropTypes.object.isRequired
 };
 
 class Screen extends React.Component {

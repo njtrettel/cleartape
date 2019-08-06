@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { Dropdown } from 'react-native-material-dropdown';
@@ -20,7 +21,7 @@ const validateRoute = (route) => {
     }
   });
   return errors;
-}
+};
 
 const SetRouteForm = (props) => {
   const initialRoute = props.navigation.getParam('route', {});
@@ -38,17 +39,17 @@ const SetRouteForm = (props) => {
     name, setter, grade, description, holds
   };
 
-  const submit = (e) => {
+  const submit = () => {
     const errors = validateRoute(route);
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return false;
     }
     setSubmitLoading(true);
-    postRoute(route).then((response) => {
+    postRoute(route).then(() => {
       setSubmitLoading(false);
       props.navigation.reset([NavigationActions.navigate({ routeName: 'Home' })], 0);
-    }).catch(error => {
+    }).catch(() => {
       setSubmitLoading(false);
       setSubmitError('Error: Could not create route');
     });
@@ -106,7 +107,11 @@ const SetRouteForm = (props) => {
         }
       </TouchableOpacity>
     </View>
-  )
+  );
+};
+
+SetRouteForm.propTypes = {
+  navigation: PropTypes.object.isRequired
 };
 
 export default SetRouteForm;

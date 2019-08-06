@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TouchableHighlight, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { HOLDS_BUTTON_COLOR, SCREEN_BACKGROUND_COLOR } from '../style';
@@ -21,6 +22,13 @@ const ViewHoldsLink = (props) => {
       <Text style={textStyle}>{children}</Text>
     </TouchableHighlight>
   );
+};
+
+ViewHoldsLink.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  holds: PropTypes.array.isRequired,
+  style: PropTypes.object,
+  children: PropTypes.node
 };
 
 export default withNavigation(ViewHoldsLink);

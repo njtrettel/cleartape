@@ -7,7 +7,7 @@ const rejectNotOk = (response) => {
     return Promise.reject(error);
   }
   return Promise.resolve(response);
-}
+};
 
 const handleError = (error) => {
   return Promise.reject(error);

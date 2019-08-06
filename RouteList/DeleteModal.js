@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity, Modal, ActivityIndicator } from 'react-native';
 import { withNavigation, NavigationActions } from 'react-navigation';
 import Toaster, { ToastStyles } from 'react-native-toaster';
@@ -6,9 +7,11 @@ import { FontAwesome } from '@expo/vector-icons';
 import { deleteRoute } from '../actions';
 import style from './style';
 
+/* eslint-disable quotes */
 const deleteMessage = `Because this app does not track users, there's no way to know if \
 you created this route. Please respect the community and do not delete routes that you \
-did not create.`
+did not create.`;
+/* eslint-enable quotes */
 
 const DeleteModal = ({ route, navigation }) => {
   const [open, setOpen] = useState(false);
@@ -21,7 +24,7 @@ const DeleteModal = ({ route, navigation }) => {
       setLoading(false);
       setOpen(false);
       navigation.reset([NavigationActions.navigate({ routeName: 'Home' })], 0);
-    }).catch(error => {
+    }).catch(() => {
       setLoading(false);
       setError('Error: Could not delete route');
     });
@@ -54,6 +57,11 @@ const DeleteModal = ({ route, navigation }) => {
       </Modal>
     </View>
   );
+};
+
+DeleteModal.propTypes = {
+  route: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default withNavigation(DeleteModal);
